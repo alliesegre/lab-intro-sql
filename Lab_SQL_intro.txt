@@ -1,0 +1,28 @@
+2. Explore tables by selecting all columns from each table or using the in built review features for your client:
+just SELECT * or use built in function
+
+3. Get film titles. : 
+SELECT title FROM sakila.film;
+
+4a. Select one column from a table and alias it:
+SELECT title as the_movies FROM sakila.film;
+
+4b.Get unique list of film languages under the alias language:
+SELECT name AS languages FROM sakila.language;
+OR from the film table -> SELECT DISTINCT
+
+5a. How many stores and staff does the company have?
+SELECT COUNT(*) AS number_employees FROM sakila.staff;
+
+SELECT COUNT(*) AS number_stores FROM sakila.store;
+
+TO GET THEM TOGETHER:
+select (select count(*) FROM sakila.staff) as number_employees,(select count(*) from sakila.store) as number_stores
+
+5b. Can you return a list of employee first names only?
+SELECT first_name FROM sakila.staff;
+
+6. Bonus: How many unique days did customers rent movies in this dataset?
+SELECT DISTINCT DATEDIFF(return_date, rental_date) AS DateDiff 
+FROM sakila.rental;
+SELECT COUNT(DISTINCT(DATEDIFF(return_date,rental_date))) from rental;
